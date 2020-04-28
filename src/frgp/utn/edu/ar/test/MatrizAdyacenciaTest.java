@@ -48,4 +48,24 @@ public class MatrizAdyacenciaTest {
 
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> matrizAdyacencia.agregarElemento(column, row));
 	}
+
+	@Test
+	public void agregarElementoTest() {
+		final Integer column = 2;
+		final Integer row = 5;
+
+		matrizAdyacencia.agregarElemento(column, row);
+		assertTrue(matrizAdyacencia.existeElemento(column, row));
+	}
+
+	@Test
+	public void eliminarElementoTest() {
+		final Integer column = 2;
+		final Integer row = 5;
+
+		matrizAdyacencia.agregarElemento(column, row);
+		assertTrue(matrizAdyacencia.existeElemento(column, row));
+		matrizAdyacencia.eliminarElemento(column, row);
+		assertFalse(matrizAdyacencia.existeElemento(column, row));
+	}
 }
