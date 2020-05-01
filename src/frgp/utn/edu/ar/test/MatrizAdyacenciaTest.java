@@ -87,10 +87,10 @@ public class MatrizAdyacenciaTest {
 		
 		//ELIMINO EL ELEMENTO Y SU SIMETRICO
 		matrizAdyacencia.eliminarElemento(column, row);
-		matrizAdyacencia.eliminarElemento(row,column);
 		
 		//VERIFICO SI EL ELEMENTO Y SU SIMETRICO SE ELIMINARON
 		assertFalse(matrizAdyacencia.existeElemento(column, row));
+		assertFalse(matrizAdyacencia.existeElemento(row, column));
 	}
 
 	@Test
