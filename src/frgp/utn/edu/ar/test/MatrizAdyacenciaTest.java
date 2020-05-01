@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import frgp.utn.edu.ar.main.MatrizAdyacencia;
@@ -68,6 +69,29 @@ public class MatrizAdyacenciaTest {
 		matrizAdyacencia.eliminarElemento(column, row);
 		assertFalse(matrizAdyacencia.existeElemento(column, row));
 	}
+	
+	@Tag("Eliminacion")
+	@Test
+	public void eliminarElementoSimetricoTest () {
+		
+		//VARIABLES 
+		final Integer column = 2;
+		final Integer row = 5;
+		
+		//AGREGO ELEMENTO Y SU SIMETRICO
+		matrizAdyacencia.agregarElemento(column, row);
+		
+		//SE AGREGO EL ELEMENTO Y SU SIMETRICO?
+		assertTrue(matrizAdyacencia.existeElemento(column, row));
+		assertTrue(matrizAdyacencia.existeElemento(row,column));
+		
+		//ELIMINO EL ELEMENTO Y SU SIMETRICO
+		matrizAdyacencia.eliminarElemento(column, row);
+		
+		//VERIFICO SI EL ELEMENTO Y SU SIMETRICO SE ELIMINARON
+		assertFalse(matrizAdyacencia.existeElemento(column, row));
+		assertFalse(matrizAdyacencia.existeElemento(row, column));
+	}
 
 	@Test
 	public void agregarElementoFilaNegativaTest () {
@@ -75,6 +99,18 @@ public class MatrizAdyacenciaTest {
 		final Integer row = -5;
 
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> matrizAdyacencia.agregarElemento(column, row));
+	}
+	
+	@Tag("Agregar")
+	@Test
+	public void agregarElementoColumnaNegativaTest () {
+		
+		//VARIABLE
+		final Integer column = -2;
+		final Integer row = 5;
+		
+		//VERIFICO QUE TIRE UNA EXCEPCION DE ESTE TIPO
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> matrizAdyacencia.agregarElemento(row, column));
 	}
 
 	@Test
