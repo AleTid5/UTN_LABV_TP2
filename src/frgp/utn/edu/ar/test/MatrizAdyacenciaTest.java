@@ -91,7 +91,6 @@ public class MatrizAdyacenciaTest {
 		
 		//VERIFICO SI EL ELEMENTO Y SU SIMETRICO SE ELIMINARON
 		assertFalse(matrizAdyacencia.existeElemento(column, row));
-		assertFalse(matrizAdyacencia.existeElemento(row,column));
 	}
 
 	@Test
